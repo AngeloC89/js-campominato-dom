@@ -15,7 +15,11 @@ difficoltà 3 ⇒ 49 caselle, con un numero compreso tra 1 e 49, divise in 7 cas
 const button = document.querySelector('.btn.btn-primary')
 const container = document.querySelector('.container');
 let levelChoice = document.getElementById('level');
+let display = document.querySelector('score')
+let score = 0;
+
 button.addEventListener('click', function () {
+    document.getElementById('score').innerHTML = 'Score ' + 0;
     // console.log('il tasto funziona');
     container.innerHTML = '';
     choice = parseInt(levelChoice.value);
@@ -40,12 +44,21 @@ button.addEventListener('click', function () {
                 if (bombs.includes(parseInt(tmpHtml.innerText))) {
                     found = true;
                     tmpHtml.classList.add('bomb');
+                    document.getElementById('score').innerHTML = 'Ops, hai perso!!!';
+                    
+                    
 
                 }
                 else 
                 {
+                    for(i = 0; i < 1; i++){
+                    score += tmpHtml[i] !== [i] + 1;
                     tmpHtml.classList.add('even')
-                    console.log(false)
+                    console.log(score)
+
+                    document.getElementById('score').innerHTML = 'Score ' + score;
+                    tmpHtml.removeEventListener('click', this);
+                    }
                     
                 }
             }
