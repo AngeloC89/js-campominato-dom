@@ -1,0 +1,76 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Press Start 2P", system-ui;
+    background-color: orange;
+
+}
+
+
+img{
+    width: 10%;
+}
+
+
+
+
+nav {
+    background: rgb(0, 0, 0);
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.9150035014005602) 0%, rgba(172, 114, 29, 0.7217261904761905) 75%, rgba(255, 181, 0, 0.7301295518207283) 100%);
+    color: white;
+    box-shadow: 3px 3px 20px 3px white;
+}
+
+#square {
+    border: 2px solid rgba(0, 0, 0, 0.688);
+    box-shadow: 2px 2px 12px 2px black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    color: black;
+    aspect-ratio: 1 / 1;
+    text-align: center;
+    cursor: crosshair;
+    animation: color 4s infinite;
+    
+   
+}
+
+@keyframes color {
+    0% {
+        color: black;
+        box-shadow: 2px 2px 12px 2px black;
+    }
+
+    50% {
+        color: white;
+        box-shadow: 2px 2px 30px 2px white;
+    }
+
+    100% {
+        color: black;
+        box-shadow: 2px 2px 12px 2px black;
+    }
+}
+
+
+.even {
+    background-color: blue;
+}
+
+.odd {
+    background-color: red;
+}
+
+#level {
+    background-color: black;
+    color: white;
+    border: 5px solid orange;
+    cursor: pointer;
+    width: 14%;
+}
