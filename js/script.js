@@ -20,77 +20,63 @@ button.addEventListener('click', function () {
     container.innerHTML = '';
     choice = parseInt(levelChoice.value);
     // console.log(choice);
+    const bombs = NewSquareBomb(choice);
+    console.log(bombs);
+    let found = false;
+    for (let i = 1; i <= choice; i++) {
 
-
-    for (let i = 1; i <= 1; i++) {
         const tmpHtml = NewSquare(i, choice, 'id', 'square');
-        const tmpHtmlBomb = NewSquareBomb(tmpHtml, 16, choice, 'id', 'bomb');
-        // console.log(tmpHtml[i]);
-        // console.log(tmpHtmlBomb[i]);
+
+        container.appendChild(tmpHtml);
 
 
+        tmpHtml.addEventListener('click', function () {
 
+            console.log('Il numero della casella è: ' + i)
+            if (!found) {
 
-        // console.log(typeof tmpHtml)
-        // console.log(Array.isArray(tmpHtml));
+                console.log(tmpHtml.innerText);
+            
+                if (bombs.includes(parseInt(tmpHtml.innerText))) {
+                    found = true;
+                    tmpHtml.classList.add('bomb');
 
-
-
-
-
-
-
-
-
-
-
-        tmpHtmlBomb.forEach(element => {
-            container.appendChild(element);
-        })
-    }
-});
-
+                }
+                else 
+                {
+                    tmpHtml.classList.add('even')
+                    console.log(false)
+                    
+                }
+            }
+        });
+        }
+      });
 
 
 
 /** ****************************** Funzioni *************************************/
 function NewSquare(content, numSquare, type, idClass) {
-    const squares = [];
-    for (i = 1; i <= numSquare - 16; i++) {
-        let newSquare = document.createElement('span');
-        newSquare.innerHTML += getRndInteger(1,choice);
-        newSquare.setAttribute(`${type}`, `${idClass}`);//ho modificato la funzione in modo da poter usare una qualsiasi classe o id senza dover compromettere la sua indipendenza dalla classe/id stessa
-        squareWidth = `calc(100% / ${Math.sqrt(numSquare)} - 10px)`;
-        newSquare.style.width = squareWidth;
-        squares.push(newSquare)
-
-    }
-
-    return squares;
+    let newSquare = document.createElement('span');
+    newSquare.innerHTML = content;
+    newSquare.setAttribute(`${type}`, `${idClass}`);//ho modificato la funzione in modo da poter usare una qualsiasi classe o id senza dover compromettere la sua indipendenza dalla classe/id stessa
+    squareWidth = `calc(100% / ${Math.sqrt(numSquare)} - 10px)`;
+    newSquare.style.width = squareWidth;
+    return newSquare;
 }
-function NewSquareBomb(list, numSquare, choice, type, idClass) {
-    let isFound = false;
+
+
+function NewSquareBomb(max) {
+
     const squaresBomb = [];
-    for (i = 1; i <= numSquare; i++) {
-        let newSquare = document.createElement('span');
-        newSquare.innerHTML = getRndInteger(1, choice);
-        while (!isFound) {
-            randomInt = getRndInteger(1, 100);
-            if (!list.includes(squaresBomb)) {
-                isFound = true;
-            }
-        }
-        newSquare.setAttribute(`${type}`, `${idClass}`);
-        squareWidth = `calc(100% / ${Math.sqrt(choice)} - 10px)`;
-        newSquare.style.width = squareWidth;
-        squaresBomb.push(newSquare)
+    for (i = 1; i <= 16; i++) {
+        squaresBomb.push(getRndInteger(1, max));
+        squaresBomb.innerHTML = `<img src="./img/PngItem_2143500.png" alt="apple">`
+
+
+
 
     }
 
     return squaresBomb;
 }
-
-
-
-
-
