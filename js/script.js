@@ -12,7 +12,6 @@ difficoltà 3 ⇒ 49 caselle, con un numero compreso tra 1 e 49, divise in 7 cas
 * */
 
 
-
 const button = document.querySelector('.btn.btn-primary')
 const container = document.querySelector('.container');
 let levelChoice = document.getElementById('level');
@@ -25,33 +24,41 @@ button.addEventListener('click', function () {
 
     for (let i = 1; i <= 1; i++) {
         const tmpHtml = NewSquare(i, choice, 'id', 'square');
-        console.log(typeof tmpHtml)
-        console.log(Array.isArray(tmpHtml));
-        tmpHtml.forEach(element => {
+        const tmpHtmlBomb = NewSquareBomb(tmpHtml, 16, choice, 'id', 'bomb');
+        // console.log(tmpHtml[i]);
+        // console.log(tmpHtmlBomb[i]);
+
+
+
+
+        // console.log(typeof tmpHtml)
+        // console.log(Array.isArray(tmpHtml));
+
+
+
+
+
+
+
+
+
+
+
+        tmpHtmlBomb.forEach(element => {
             container.appendChild(element);
-       })
+        })
     }
-    });
-
-
-
-
-
-
-   
-
+});
 
 
 
 
 /** ****************************** Funzioni *************************************/
-
-//questa funzione crea i singoli quadrati stabilendo anche la width usando calc... numSquare verrà sostituito dal numero di quadrati che vogliamo creare, che in questo caso è deciso tramite "choice(difficoltà)", ma nella funzione serve solo a stabilire la radice quadrata per usarla nella width e stabilire la lunghezza della riga della griglia
 function NewSquare(content, numSquare, type, idClass) {
     const squares = [];
-    for (i = 1; i <= numSquare; i++) {
+    for (i = 1; i <= numSquare - 16; i++) {
         let newSquare = document.createElement('span');
-        newSquare.innerHTML = i;
+        newSquare.innerHTML += getRndInteger(1,choice);
         newSquare.setAttribute(`${type}`, `${idClass}`);//ho modificato la funzione in modo da poter usare una qualsiasi classe o id senza dover compromettere la sua indipendenza dalla classe/id stessa
         squareWidth = `calc(100% / ${Math.sqrt(numSquare)} - 10px)`;
         newSquare.style.width = squareWidth;
@@ -61,3 +68,29 @@ function NewSquare(content, numSquare, type, idClass) {
 
     return squares;
 }
+function NewSquareBomb(list, numSquare, choice, type, idClass) {
+    let isFound = false;
+    const squaresBomb = [];
+    for (i = 1; i <= numSquare; i++) {
+        let newSquare = document.createElement('span');
+        newSquare.innerHTML = getRndInteger(1, choice);
+        while (!isFound) {
+            randomInt = getRndInteger(1, 100);
+            if (!list.includes(squaresBomb)) {
+                isFound = true;
+            }
+        }
+        newSquare.setAttribute(`${type}`, `${idClass}`);
+        squareWidth = `calc(100% / ${Math.sqrt(choice)} - 10px)`;
+        newSquare.style.width = squareWidth;
+        squaresBomb.push(newSquare)
+
+    }
+
+    return squaresBomb;
+}
+
+
+
+
+

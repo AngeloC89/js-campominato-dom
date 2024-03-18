@@ -11,7 +11,7 @@ body {
 }
 
 
-img{
+img {
     width: 10%;
 }
 
@@ -36,27 +36,29 @@ nav {
     aspect-ratio: 1 / 1;
     text-align: center;
     cursor: crosshair;
-    animation: color 4s infinite;
-    
-   
+
 }
 
-@keyframes color {
-    0% {
-        color: black;
-        box-shadow: 2px 2px 12px 2px black;
-    }
 
-    50% {
-        color: white;
-        box-shadow: 2px 2px 30px 2px white;
-    }
+#bomb {
+    content: url(../img/PngItem_2143500.png);
+    border: 2px solid rgba(0, 0, 0, 0.688);
+    box-shadow: 2px 2px 12px 2px black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    color: black;
+    aspect-ratio: 1 / 1;
+    text-align: center;
+    cursor: crosshair;
 
-    100% {
-        color: black;
-        box-shadow: 2px 2px 12px 2px black;
-    }
 }
+
+
+
+
+
 
 
 .even {
