@@ -55,6 +55,9 @@ button.addEventListener('click', function () {
                             tmpHtml.classList.add('even')
                             console.log(score)
                             document.getElementById('score').innerHTML = 'Score ' + score;
+                            if(score === choice -16){
+                                document.getElementById('score').innerHTML = ' Hai vinto!!! ';
+                            }
                             tmpHtml.clicked = true;
                         }
 
@@ -77,7 +80,6 @@ function NewSquare(content, numSquare, type, idClass) {
     newSquare.style.width = squareWidth;
     return newSquare;
 }
-
 
 function NewSquareBomb(max) {
     let found = false;

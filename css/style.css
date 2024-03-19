@@ -17,10 +17,11 @@ img {
 
 #score{
     background-color: black;
-    width: 300px;
-    height: 30px;
+    width: 14%;
+    height: 40px;
     padding: 7px;
     margin: auto;
+    border: 5px solid orange;
 }
 
 
