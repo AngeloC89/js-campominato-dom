@@ -19,7 +19,7 @@ let display = document.querySelector('score')
 let score = 0;
 
 button.addEventListener('click', function () {
-    document.getElementById('score').innerHTML = 'Score ' + 0;
+    document.getElementById('score').innerHTML = 'Score ' + (score = 0);
     // console.log('il tasto funziona');
     container.innerHTML = '';
     choice = parseInt(levelChoice.value);
@@ -72,7 +72,7 @@ button.addEventListener('click', function () {
 function NewSquare(content, numSquare, type, idClass) {
     let newSquare = document.createElement('span');
     newSquare.innerHTML = content;
-    newSquare.setAttribute(`${type}`, `${idClass}`);//ho modificato la funzione in modo da poter usare una qualsiasi classe o id senza dover compromettere la sua indipendenza dalla classe/id stessa
+    newSquare.setAttribute(`${type}`, `${idClass}`);
     squareWidth = `calc(100% / ${Math.sqrt(numSquare)} - 10px)`;
     newSquare.style.width = squareWidth;
     return newSquare;
@@ -80,16 +80,17 @@ function NewSquare(content, numSquare, type, idClass) {
 
 
 function NewSquareBomb(max) {
-
+    let found = false;
     const squaresBomb = [];
-    for (i = 1; i <= 16; i++) {
-        squaresBomb.push(getRndInteger(1, max));
-        squaresBomb.innerHTML = `<img src="./img/PngItem_2143500.png" alt="apple">`
-
-
-
-
+  
+    while (squaresBomb.length < 16) {
+      let currentSquare = getRndInteger(1, max);
+  
+      if (!squaresBomb.includes(currentSquare)) {
+        squaresBomb.push(currentSquare);
+      }
     }
-
+  
     return squaresBomb;
-}
+  }
+  
