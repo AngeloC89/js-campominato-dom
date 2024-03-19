@@ -13,6 +13,7 @@ difficoltà 3 ⇒ 49 caselle, con un numero compreso tra 1 e 49, divise in 7 cas
 
 
 
+
 const button = document.querySelector('.btn.btn-primary')
 const container = document.querySelector('.container');
 let levelChoice = document.getElementById('level');
@@ -34,7 +35,9 @@ button.addEventListener('click', function () {
 
         container.appendChild(tmpHtml);
 
-
+        if(bombs.includes(i)){
+            tmpHtml.classList.add('is-bomb')
+        };
         tmpHtml.addEventListener('click', function () {
             if (!tmpHtml.clicked) {
 
@@ -42,25 +45,25 @@ button.addEventListener('click', function () {
 
                     if (bombs.includes(parseInt(tmpHtml.textContent))) {
                         found = true;
-                       
+
                         document.getElementById('score').innerHTML = 'Ops, hai perso!!!';
-                    
-                        const boomS = document.querySelectorAll('#square');
-                        boomS.forEach(function(bomb) {
-                            bomb.classList.add('bomb');
+
+                        const squares = document.querySelectorAll('.is-bomb');
+                        squares.forEach(function (square) {
+                            square.classList.add('bomb');
                         });
                     }
                     else {
-                        
-                            score++
-                            tmpHtml.classList.add('safe')
-                            console.log(score)
-                            document.getElementById('score').innerHTML = 'Score ' + score;
-                            if(score === choice -16){
-                                document.getElementById('score').innerHTML = ' Hai vinto!!! ';
-                            }
-                            tmpHtml.clicked = true;
-                  
+
+                        score++
+                        tmpHtml.classList.add('safe')
+                        console.log(score)
+                        document.getElementById('score').innerHTML = 'Score ' + score;
+                        if (score === choice - 16) {
+                            document.getElementById('score').innerHTML = ' Hai vinto!!! ';
+                        }
+                        tmpHtml.clicked = true;
+
 
                     }
                 }
@@ -96,4 +99,3 @@ function NewSquareBomb(max) {
 
     return squaresBomb;
 }
-
