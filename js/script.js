@@ -35,36 +35,35 @@ button.addEventListener('click', function () {
 
 
         tmpHtml.addEventListener('click', function () {
+            if (!tmpHtml.clicked) {
 
-            console.log('Il numero della casella è: ' + i)
-            if (!found) {
+                console.log('Il numero della casella è: ' + i)
 
-                console.log(tmpHtml.innerText);
-            
-                if (bombs.includes(parseInt(tmpHtml.innerText))) {
-                    found = true;
-                    tmpHtml.classList.add('bomb');
-                    document.getElementById('score').innerHTML = 'Ops, hai perso!!!';
-                    
-                    
+                if (!found) {
 
-                }
-                else 
-                {
-                    for(i = 0; i < 1; i++){
-                    score += tmpHtml[i] !== [i] + 1;
-                    tmpHtml.classList.add('even')
-                    console.log(score)
+                    console.log(tmpHtml.innerText);
 
-                    document.getElementById('score').innerHTML = 'Score ' + score;
-                    tmpHtml.removeEventListener('click', this);
+                    if (bombs.includes(parseInt(tmpHtml.innerText))) {
+                        found = true;
+                        tmpHtml.classList.add('bomb');
+                        document.getElementById('score').innerHTML = 'Ops, hai perso!!!';
+
                     }
-                    
+                    else {
+                        for (i = 0; i < 1; i++) {
+                            score++
+                            tmpHtml.classList.add('even')
+                            console.log(score)
+                            document.getElementById('score').innerHTML = 'Score ' + score;
+                            tmpHtml.clicked = true;
+                        }
+
+                    }
                 }
             }
         });
-        }
-      });
+    }
+});
 
 
 
@@ -72,6 +71,7 @@ button.addEventListener('click', function () {
 function NewSquare(content, numSquare, type, idClass) {
     let newSquare = document.createElement('span');
     newSquare.innerHTML = content;
+    newSquare.clicked = false;
     newSquare.setAttribute(`${type}`, `${idClass}`);
     squareWidth = `calc(100% / ${Math.sqrt(numSquare)} - 10px)`;
     newSquare.style.width = squareWidth;
@@ -82,15 +82,14 @@ function NewSquare(content, numSquare, type, idClass) {
 function NewSquareBomb(max) {
     let found = false;
     const squaresBomb = [];
-  
+
     while (squaresBomb.length < 16) {
-      let currentSquare = getRndInteger(1, max);
-  
-      if (!squaresBomb.includes(currentSquare)) {
-        squaresBomb.push(currentSquare);
-      }
+        let currentSquare = getRndInteger(1, max);
+
+        if (!squaresBomb.includes(currentSquare)) {
+            squaresBomb.push(currentSquare);
+        }
     }
-  
+
     return squaresBomb;
-  }
-  
+}
