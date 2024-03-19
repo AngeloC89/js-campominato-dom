@@ -5,11 +5,17 @@
 }
 
 body {
+    background-image: url(../img/peakpx.png);
+    background-size: cover;
+    background-repeat: no-repeat;
     font-family: "Press Start 2P", system-ui;
     background-color: black;
 
 }
-
+.container{
+    margin-top: 100px;
+    
+}
 
 img {
     width: 10%;
@@ -17,7 +23,7 @@ img {
 
 #score{
     background-color: black;
-    width: 14%;
+    width: 25%;
     height: 40px;
     padding: 7px;
     margin: auto;
@@ -27,12 +33,12 @@ img {
 
 nav {
     background: rgb(0, 0, 0);
-    background: linear-gradient(90deg, rgba(0, 0, 0, 0.9150035014005602) 0%, rgba(172, 114, 29, 0.7217261904761905) 75%, rgba(255, 181, 0, 0.7301295518207283) 100%);
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.9150035014005602) 0%, rgba(1, 1, 1, 0.722) 75%, rgba(5, 5, 5, 0.73) 100%);
     color: white;
     box-shadow: 3px 3px 20px 3px white;
 }
 
-#square {
+#square, .bomb {
     border: 2px solid rgba(255, 255, 255, 0.787);
     box-shadow: 2px 2px 12px 2px black;
     display: flex;
@@ -50,31 +56,10 @@ nav {
 
 .bomb {
     content: url(../img/PngItem_2143500.png);
-    border: 2px solid rgba(0, 0, 0, 0.688);
-    box-shadow: 2px 2px 12px 2px black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    color: black;
-    aspect-ratio: 1 / 1;
-    text-align: center;
-    cursor: crosshair;
-
 }
 
-
-
-
-
-
-
-.even {
+.safe {
     background-color: blue;
-}
-
-.odd {
-    background-color: red;
 }
 
 #level {

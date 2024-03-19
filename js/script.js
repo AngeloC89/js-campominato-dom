@@ -52,7 +52,7 @@ button.addEventListener('click', function () {
                     else {
                         for (i = 0; i < 1; i++) {
                             score++
-                            tmpHtml.classList.add('even')
+                            tmpHtml.classList.add('safe')
                             console.log(score)
                             document.getElementById('score').innerHTML = 'Score ' + score;
                             if(score === choice -16){
