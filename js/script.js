@@ -12,6 +12,7 @@ difficoltà 3 ⇒ 49 caselle, con un numero compreso tra 1 e 49, divise in 7 cas
 * */
 
 
+
 const button = document.querySelector('.btn.btn-primary')
 const container = document.querySelector('.container');
 let levelChoice = document.getElementById('level');
@@ -37,20 +38,20 @@ button.addEventListener('click', function () {
         tmpHtml.addEventListener('click', function () {
             if (!tmpHtml.clicked) {
 
-                console.log('Il numero della casella è: ' + i)
-
                 if (!found) {
 
-                    console.log(tmpHtml.innerText);
-
-                    if (bombs.includes(parseInt(tmpHtml.innerText))) {
+                    if (bombs.includes(parseInt(tmpHtml.textContent))) {
                         found = true;
-                        tmpHtml.classList.add('bomb');
+                       
                         document.getElementById('score').innerHTML = 'Ops, hai perso!!!';
-
+                    
+                        const boomS = document.querySelectorAll('#square');
+                        boomS.forEach(function(bomb) {
+                            bomb.classList.add('bomb');
+                        });
                     }
                     else {
-                        for (i = 0; i < 1; i++) {
+                        
                             score++
                             tmpHtml.classList.add('safe')
                             console.log(score)
@@ -59,7 +60,7 @@ button.addEventListener('click', function () {
                                 document.getElementById('score').innerHTML = ' Hai vinto!!! ';
                             }
                             tmpHtml.clicked = true;
-                        }
+                  
 
                     }
                 }
@@ -95,3 +96,4 @@ function NewSquareBomb(max) {
 
     return squaresBomb;
 }
+
